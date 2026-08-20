@@ -97,12 +97,10 @@
                     <button class="component-group-header" onclick="toggleBuilderGroup(this)"><span class="arrow">▼</span>个人信息</button>
                     <div class="component-grid">
                       <button class="component-tile" onclick="addBuilderComponent('name')"><span class="comp-icon">♙</span><span>姓名</span></button>
-                      <button class="component-tile" onclick="addBuilderComponent('basic')"><span class="comp-icon">♟</span><span>基本信息</span></button>
                       <button class="component-tile" onclick="addBuilderComponent('gender')"><span class="comp-icon">●</span><span>性别</span></button>
                       <button class="component-tile" onclick="addBuilderComponent('phone')"><span class="comp-icon">▯</span><span>手机</span></button>
                       <button class="component-tile" onclick="addBuilderComponent('email')"><span class="comp-icon">✉</span><span>邮箱</span></button>
                       <button class="component-tile" onclick="addBuilderComponent('date')"><span class="comp-icon">▣</span><span>日期/生日</span></button>
-                      <button class="component-tile" onclick="addBuilderComponent('company')"><span class="comp-icon">▥</span><span>企业信息</span></button>
                       <button class="component-tile" onclick="addBuilderComponent('address')"><span class="comp-icon">⌖</span><span>邮寄地址</span></button>
                     </div>
                   </div>
@@ -114,7 +112,6 @@
                       <button class="component-tile" onclick="addBuilderComponent('select')"><span class="comp-icon">↕</span><span>下拉框</span></button>
                       <button class="component-tile" onclick="addBuilderComponent('upload')"><span class="comp-icon">↥</span><span>文件上传</span></button>
                       <button class="component-tile" onclick="addBuilderComponent('sort')"><span class="comp-icon">☷</span><span>排序</span></button>
-                      <button class="component-tile" onclick="addBuilderComponent('scale')"><span class="comp-icon">★</span><span>量表题</span></button>
                     </div>
                   </div>
                   <div class="component-group">
@@ -123,7 +120,6 @@
                       <button class="component-tile" data-builder-type="input" onclick="addBuilderComponent('input')"><span class="comp-icon">I</span><span>单项填空</span></button>
                       <button class="component-tile" data-builder-type="textarea" onclick="addBuilderComponent('textarea')"><span class="comp-icon">Ⅰ</span><span>简答题</span></button>
                       <button class="component-tile" onclick="addBuilderComponent('multiinput')"><span class="comp-icon">{ }</span><span>多项填空</span></button>
-                      <button class="component-tile" onclick="addBuilderComponent('matrixfill')"><span class="comp-icon">Ⅱ</span><span>矩阵填空</span></button>
                       <button class="component-tile" onclick="addBuilderComponent('cascader')"><span class="comp-icon">▽</span><span>多级下拉</span></button>
                       <button class="component-tile" onclick="addBuilderComponent('date')"><span class="comp-icon">▣</span><span>日期</span></button>
                     </div>
@@ -131,20 +127,8 @@
                   <div class="component-group">
                     <button class="component-group-header" onclick="toggleBuilderGroup(this)"><span class="arrow">▼</span>分页说明</button>
                     <div class="component-grid">
-                      <button class="component-tile" onclick="addBuilderComponent('pagebreak')"><span class="comp-icon">▥</span><span>分页栏</span></button>
-                      <button class="component-tile" onclick="addBuilderComponent('onepage')"><span class="comp-icon">▧</span><span>一题一页</span></button>
                       <button class="component-tile" onclick="addBuilderComponent('body')"><span class="comp-icon">T</span><span>段落说明</span></button>
                       <button class="component-tile" onclick="addBuilderComponent('timer')"><span class="comp-icon">◔</span><span>分页计时</span></button>
-                      <button class="component-tile" onclick="addBuilderComponent('collapse')"><span class="comp-icon">◆</span><span>折叠栏目</span></button>
-                    </div>
-                  </div>
-                  <div class="component-group">
-                    <button class="component-group-header" onclick="toggleBuilderGroup(this)"><span class="arrow">▼</span>矩阵题</button>
-                    <div class="component-grid">
-                      <button class="component-tile" onclick="addBuilderComponent('matrixradio')"><span class="comp-icon">◉</span><span>矩阵单选</span></button>
-                      <button class="component-tile" onclick="addBuilderComponent('matrixcheck')"><span class="comp-icon">✓</span><span>矩阵多选</span></button>
-                      <button class="component-tile" onclick="addBuilderComponent('matrixscale')"><span class="comp-icon">★</span><span>矩阵量表</span></button>
-                      <button class="component-tile" onclick="addBuilderComponent('matrixfill')"><span class="comp-icon">Ⅱ</span><span>矩阵填空</span></button>
                     </div>
                   </div>
                   <div class="notice-row" style="padding:10px;margin-top:8px"><div class="notice-icon">↕</div><div class="notice-copy"><b style="font-size:12px">自由编排</b><small>组件可排序、复制或删除</small></div></div>
@@ -155,7 +139,7 @@
                 </main>
                 <aside class="builder-properties"><div class="builder-pane-title">组件属性</div><div class="builder-pane-sub">选中画布中的组件即可编辑。</div><div id="propertyPanel"></div></aside>
               </div>
-              <div class="builder-footer"><span class="save-state" id="builderSaveState">最近保存：尚未保存</span><div class="head-buttons"><button class="btn" onclick="previewActivity()">◉ 预览</button><button class="btn" onclick="saveBuilder()">保存</button><button class="btn primary" onclick="publishBuilderPage()">完成搭建并生成链接</button></div></div>
+              <div class="builder-footer"><span class="save-state" id="builderSaveState">最近保存：尚未保存</span><div class="head-buttons"><button class="btn" onclick="previewActivity()">◉ 预览</button><button class="btn" onclick="saveBuilder()">保存</button><button class="btn primary" onclick="publishBuilderPage()">创建活动</button></div></div>
             </div>
             <div class="tab-panel" id="tab-banner">
               <div class="banner-config">
@@ -189,7 +173,7 @@
 
         <section class="page" id="participations">
           <div class="page-head"><div><h1>活动参与记录</h1><p>记录用户对活动所创建组件的填写内容，可逐项查看完整答案。</p></div><div class="head-buttons"><button class="btn" onclick="exportData()">⇩ 导出 Excel</button></div></div>
-          <div class="card"><div class="card-body"><div class="toolbar"><select class="field" id="participationActivityFilter"><option value="all">全部活动</option></select><select class="field" id="statusFilter"><option value="all">全部状态</option><option value="未查看">未查看</option><option value="已查看">已查看</option></select><input class="field search" id="recordSearch" placeholder="搜索参与编号、活动、用户或提交内容" /><button class="btn primary" onclick="filterRecords()">查询</button><button class="btn" onclick="resetRecords()">重置</button><span class="spacer"></span><span id="participationRecordCount" style="color:var(--muted);font-size:12px">共 0 条记录</span></div></div><div class="table-wrap"><table class="data-table" id="recordTable"><thead><tr><th>参与编号</th><th>活动名称</th><th>提交用户</th><th>提交内容摘要</th><th>状态</th><th>提交时间</th><th>操作</th></tr></thead><tbody></tbody></table></div><div class="pagination"><span>20 条/页</span><button class="page-btn">‹</button><button class="page-btn current">1</button><button class="page-btn">›</button></div></div>
+          <div class="card"><div class="card-body"><div class="toolbar"><select class="field" id="participationActivityFilter"><option value="all">全部活动</option></select><select class="field" id="statusFilter"><option value="all">全部状态</option><option value="未查看">未查看</option><option value="已查看">已查看</option></select><input class="field search" id="recordSearch" placeholder="搜索参与编号、活动、参与用户名或填写内容" /><button class="btn primary" onclick="filterRecords()">查询</button><button class="btn" onclick="resetRecords()">重置</button><span class="spacer"></span><span id="participationRecordCount" style="color:var(--muted);font-size:12px">共 0 条记录</span></div></div><div class="table-wrap"><table class="data-table" id="recordTable"><thead><tr><th>参与编号</th><th>活动名称（主标题）</th><th>参与用户名</th><th>状态</th><th>提交时间</th><th>操作</th></tr></thead><tbody></tbody></table></div><div class="pagination"><span>20 条/页</span><button class="page-btn">‹</button><button class="page-btn current">1</button><button class="page-btn">›</button></div></div>
         </section>
 
       </div>
@@ -511,13 +495,15 @@
     });
     document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('tab-'+b.dataset.tab).classList.add('active')}));
     function badge(status){const c={'未查看':'orange','已查看':'green'}[status]||'blue';return `<span class="badge ${c}">${esc(status)}</span>`}
-    function participationAnswerText(record){return (record.answers||[]).map(function(a){return a.label+' '+(Array.isArray(a.value)?a.value.join('、'):a.value||'')}).join(' ')}
-    function participationSummary(record){const personalTypes=['name','company','phone','email','address','date','gender','basic'],substantive=(record.answers||[]).find(function(a){return personalTypes.indexOf(a.type)<0&&a.value&&a.value!=='未填写'}),fallback=(record.answers||[]).find(function(a){return a.value&&a.value!=='未填写'}),value=(substantive||fallback||{}).value;return (Array.isArray(value)?value.join('、'):String(value||''))||'已提交活动信息'}
+    const removedParticipationAnswerTypes=['basic','company','scale','pagebreak','onepage','collapse'];
+    function visibleParticipationAnswers(record){return (record.answers||[]).filter(function(answer){const type=String(answer&&answer.type||'');return removedParticipationAnswerTypes.indexOf(type)<0&&type.indexOf('matrix')!==0})}
+    function participationAnswerText(record){return visibleParticipationAnswers(record).map(function(a){return a.label+' '+(Array.isArray(a.value)?a.value.join('、'):a.value||'')}).join(' ')}
+    function participationSummary(record){const personalTypes=['name','phone','email','address','date','gender'],answers=visibleParticipationAnswers(record),substantive=answers.find(function(a){return personalTypes.indexOf(a.type)<0&&a.value&&a.value!=='未填写'}),fallback=answers.find(function(a){return a.value&&a.value!=='未填写'}),value=(substantive||fallback||{}).value;return (Array.isArray(value)?value.join('、'):String(value||''))||'已提交活动信息'}
     function renderParticipationActivityFilter(){const select=document.getElementById('participationActivityFilter');if(!select)return;const current=select.value||'all',names=[];records.forEach(function(r){if(r.activityName&&names.indexOf(r.activityName)<0)names.push(r.activityName)});select.innerHTML='<option value="all">全部活动</option>'+names.map(function(name){return '<option value="'+esc(name)+'">'+esc(name)+'</option>'}).join('');if(Array.from(select.options).some(function(option){return option.value===current}))select.value=current}
-    function renderRecords(rows=records){const tb=document.querySelector('#recordTable tbody');if(!tb)return;renderParticipationActivityFilter();const count=document.getElementById('participationRecordCount');if(count)count.textContent='共 '+rows.length+' 条记录';tb.innerHTML=rows.map(function(r){return '<tr><td>'+esc(r.id)+'</td><td class="title-cell">'+esc(r.activityName)+'</td><td>'+esc(r.user||'匿名用户')+(r.company?'<span class="subtext">'+esc(r.company)+'</span>':'')+'</td><td class="title-cell">'+esc(participationSummary(r))+'<span class="subtext">共 '+(r.answers||[]).length+' 项填写内容</span></td><td>'+badge(r.status)+'</td><td>'+esc(r.submittedAt)+'</td><td><button class="link" onclick="openDrawer(\''+esc(r.id)+'\')">查看详情</button></td></tr>'}).join('')||'<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:36px">没有符合条件的记录</td></tr>'}
-    function filterRecords(){const q=document.getElementById('recordSearch').value.trim().toLowerCase(),s=document.getElementById('statusFilter').value,activity=document.getElementById('participationActivityFilter').value;renderRecords(records.filter(function(r){const text=[r.id,r.activityName,r.user,r.company,participationAnswerText(r)].join(' ').toLowerCase();return (s==='all'||r.status===s)&&(activity==='all'||r.activityName===activity)&&(!q||text.indexOf(q)>=0)}));showToast('筛选条件已应用')}
+    function renderRecords(rows=records){const tb=document.querySelector('#recordTable tbody');if(!tb)return;renderParticipationActivityFilter();const count=document.getElementById('participationRecordCount');if(count)count.textContent='共 '+rows.length+' 条记录';tb.innerHTML=rows.map(function(r){return '<tr><td>'+esc(r.id)+'</td><td class="title-cell">'+esc(r.activityName)+'</td><td>'+esc(r.user||'匿名用户')+'</td><td>'+badge(r.status)+'</td><td>'+esc(r.submittedAt)+'</td><td><button class="link" onclick="openDrawer(\''+esc(r.id)+'\')">查看详情</button></td></tr>'}).join('')||'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:36px">没有符合条件的记录</td></tr>'}
+    function filterRecords(){const q=document.getElementById('recordSearch').value.trim().toLowerCase(),s=document.getElementById('statusFilter').value,activity=document.getElementById('participationActivityFilter').value;renderRecords(records.filter(function(r){const text=[r.id,r.activityName,r.user,participationAnswerText(r)].join(' ').toLowerCase();return (s==='all'||r.status===s)&&(activity==='all'||r.activityName===activity)&&(!q||text.indexOf(q)>=0)}));showToast('筛选条件已应用')}
     function resetRecords(){document.getElementById('recordSearch').value='';document.getElementById('statusFilter').value='all';document.getElementById('participationActivityFilter').value='all';renderRecords()}
-    function openDrawer(recordId){const record=records.find(function(r){return r.id===recordId});if(!record){showToast('未找到该参与记录');return}if(record.status!=='已查看'){record.status='已查看';persistParticipationRecords();renderRecords()}document.getElementById('drawerRecordId').textContent=record.id;const answers=(record.answers||[]).map(function(answer,index){const value=Array.isArray(answer.value)?answer.value.join('、'):answer.value;return '<div class="participation-answer"><b>'+(index+1)+'. '+esc(answer.label||'未命名组件')+'</b><p>'+esc(value||'未填写')+'</p></div>'}).join('')||'<div class="activity-content-empty">该记录没有可展示的填写内容。</div>';document.getElementById('drawerContent').innerHTML='<div class="detail-section"><h3>用户与参与信息</h3><dl class="definition"><dt>活动名称</dt><dd>'+esc(record.activityName)+'</dd><dt>提交用户</dt><dd>'+esc(record.user||'匿名用户')+(record.company?' · '+esc(record.company):'')+'</dd><dt>专属销售</dt><dd>'+esc(record.sales||'—')+'</dd><dt>提交时间</dt><dd>'+esc(record.submittedAt)+'</dd><dt>当前状态</dt><dd>'+badge(record.status)+'</dd></dl></div><div class="detail-section"><h3>活动组件填写内容</h3><div class="participation-answer-list">'+answers+'</div></div><div class="detail-section"><h3>查看记录</h3><div class="timeline"><div class="timeline-item"><strong>用户提交活动信息</strong><p>'+esc(record.submittedAt)+' · 已记录全部组件答案</p></div><div class="timeline-item"><strong>运营人员已查看</strong><p>当前状态：'+esc(record.status)+'</p></div></div></div>';document.getElementById('drawerMask').classList.add('show')}
+    function openDrawer(recordId){const record=records.find(function(r){return r.id===recordId});if(!record){showToast('未找到该参与记录');return}if(record.status!=='已查看'){record.status='已查看';persistParticipationRecords();renderRecords()}document.getElementById('drawerRecordId').textContent=record.id;const answers=visibleParticipationAnswers(record).map(function(answer,index){const value=Array.isArray(answer.value)?answer.value.join('、'):answer.value;return '<div class="participation-answer"><b>'+(index+1)+'. '+esc(answer.label||'未命名组件')+'</b><p>'+esc(value||'未填写')+'</p></div>'}).join('')||'<div class="activity-content-empty">该记录没有可展示的填写内容。</div>';document.getElementById('drawerContent').innerHTML='<div class="detail-section"><h3>用户与参与信息</h3><dl class="definition"><dt>活动名称（主标题）</dt><dd>'+esc(record.activityName)+'</dd><dt>参与用户名</dt><dd>'+esc(record.user||'匿名用户')+'</dd><dt>提交时间</dt><dd>'+esc(record.submittedAt)+'</dd><dt>当前状态</dt><dd>'+badge(record.status)+'</dd></dl></div><div class="detail-section"><h3>活动组件填写内容</h3><div class="participation-answer-list">'+answers+'</div></div><div class="detail-section"><h3>查看记录</h3><div class="timeline"><div class="timeline-item"><strong>用户提交活动信息</strong><p>'+esc(record.submittedAt)+' · 已记录当前活动组件答案</p></div><div class="timeline-item"><strong>运营人员已查看</strong><p>当前状态：'+esc(record.status)+'</p></div></div></div>';document.getElementById('drawerMask').classList.add('show')}
     function closeDrawer(){document.getElementById('drawerMask').classList.remove('show')}
     function confirmModal(){if(modalType==='create'){nextCreateStep();return}closeModal();showToast('操作已保存')}
     function closeModal(){document.getElementById('modalMask').classList.remove('show')}function maskClose(e,id){if(e.target.id===id)document.getElementById(id).classList.remove('show')}
