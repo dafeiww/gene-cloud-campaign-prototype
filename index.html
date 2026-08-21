@@ -194,7 +194,7 @@
     const permanentContentPageId='PAGE-20260821-PUBLIC-001';
     const legacyPermanentActivityId='ACT-20260814-001';
     const legacyPermanentContentPageId='PAGE-20260814-001';
-    const permanentActivityTemplateVersion=2;
+    const permanentActivityTemplateVersion=3;
     let activityRecords=[];
     let editingActivityId='ACT-20260814-001';
     function activityBadgeClass(status){return {'已发布':'blue','进行中':'blue','草稿':'orange','已撤回':'gray','已撤销':'red','已结束':'gray'}[status]||'blue'}
@@ -296,15 +296,23 @@
     function buildPermanentActivityLayout(){
       const title=makeActivityTitleComponent('你提建议，我们认真改');title.align='left';title.size='28';
       const rule=makeBuilderComponent('rule');rule.text='1. 活动时间:即日起至2026年10月31日\n2. 用户可多次提交建议\n3. 用户建议一旦采纳,我们将送出精美礼品一份';
-      const suggestion=makeBuilderComponent('textarea');suggestion.label='请详细描述你对云平台的建议';suggestion.placeholder='请输入使用场景、遇到的问题和改进想法';suggestion.required=true;
-      const scene=makeBuilderComponent('upload');scene.label='具体使用场景';scene.required=false;
+      const suggestion=makeBuilderComponent('textarea');suggestion.label='请详细描述您对派森诺基因云平台的宝贵建议';suggestion.placeholder='请输入使用场景、遇到的问题和改进想法';suggestion.required=true;
+      const scene=makeBuilderComponent('upload');scene.label='补充说明';scene.required=false;
       const name=makeBuilderComponent('name');name.label='姓名';name.placeholder='请输入姓名';name.required=true;
       const phone=makeBuilderComponent('phone');phone.label='手机';phone.placeholder='请输入手机号';phone.required=true;
-      const email=makeBuilderComponent('email');email.label='邮箱';email.placeholder='请输入邮箱';email.required=true;
-      const participant=makeBuilderComponent('select');participant.label='参与人员';participant.options=['科研人员','临床医生','企业用户','高校师生','其他'];participant.required=true;
+      const participant=makeBuilderComponent('select');participant.label='身份信息';participant.options=['科研人员','临床医生','企业用户','高校师生','其他'];participant.required=true;
       const company=makeBuilderComponent('company');company.label='所属单位';company.placeholder='请输入所属单位';company.required=false;
       const address=makeBuilderComponent('address');address.label='邮寄地址';address.placeholder='请输入省市区和详细地址';address.required=true;
-      return [title,rule,suggestion,scene,name,phone,email,participant,company,address];
+      return [title,rule,suggestion,scene,name,phone,participant,company,address];
+    }
+    function buildDemoActivityLayout(){
+      const layout=buildPermanentActivityLayout(),suggestion=layout.find(function(component){return component.type==='textarea'}),scene=layout.find(function(component){return component.type==='upload'}),participant=layout.find(function(component){return component.type==='select'}),phoneIndex=layout.findIndex(function(component){return component.type==='phone'}),email=makeBuilderComponent('email');
+      if(suggestion)suggestion.label='请详细描述你对云平台的建议';
+      if(scene)scene.label='具体使用场景';
+      if(participant)participant.label='参与人员';
+      email.label='邮箱';email.placeholder='请输入邮箱';email.required=true;
+      layout.splice(phoneIndex+1,0,email);
+      return layout;
     }
     let builderComponents=buildPermanentActivityLayout();
     let contentPageRecords=[];
@@ -420,15 +428,15 @@
     function loadBuilderDraft(){try{const saved=JSON.parse(localStorage.getItem('geneCloudActivityLayout'));if(Array.isArray(saved)&&saved.length){builderComponents=saved;ensureActivityTitleComponent();document.getElementById('builderSaveState').textContent='已恢复上次保存的页面草稿'}}catch(e){}}
     function normalizeContentPageUrl(url){const value=String(url||'');if(value.indexOf('/campaigns/suggestion-2026/pages/content-')===0)return '/?content='+value.split('/').pop();return value}
     function absoluteContentPageUrl(url){try{const normalized=normalizeContentPageUrl(url),relative=normalized.indexOf('/?')===0?normalized.slice(1):normalized;return new URL(relative,location.href).href}catch(e){return url}}
-    function loadContentPageRecords(){try{const saved=JSON.parse(localStorage.getItem('geneCloudContentPages'));if(Array.isArray(saved)&&saved.length)contentPageRecords=saved.map(function(r){r.url=normalizeContentPageUrl(r.url);r.status=r.status||'草稿';if(!Array.isArray(r.layout)&&r.id===permanentContentPageId)r.layout=buildPermanentActivityLayout();return r})}catch(e){}}
-    const activityListSeedVersion='fixed-published-withdrawn-draft-v2';
+    function loadContentPageRecords(){try{const saved=JSON.parse(localStorage.getItem('geneCloudContentPages'));if(Array.isArray(saved)&&saved.length)contentPageRecords=saved.map(function(r){r.url=normalizeContentPageUrl(r.url);r.status=r.status||'草稿';if(r.id===permanentContentPageId&&(Number(r.templateVersion)!==permanentActivityTemplateVersion||!Array.isArray(r.layout)||!r.layout.length)){r.layout=buildPermanentActivityLayout();r.components=r.layout.length;r.templateVersion=permanentActivityTemplateVersion}return r})}catch(e){}}
+    const activityListSeedVersion='fixed-published-withdrawn-draft-v3';
     const activityListSeedDefinitions={
       '已发布':{id:'ACT-DEMO-PUBLISHED-001',activityNo:'HD-2026-0002',code:'campaign-demo-published',mainTitle:'基因云分析体验优化调研',subtitle:'收集真实分析场景中的产品建议',start:'2026-08-01 09:00',end:'2026-09-30 23:59',createdAt:'2026-08-18 10:20'},
       '已撤回':{id:'ACT-DEMO-WITHDRAWN-002',activityNo:'HD-2026-0002',code:'campaign-demo-withdrawn',mainTitle:'云分析功能体验调研',subtitle:'收集分析流程中的真实使用反馈',start:'2026-07-01 09:00',end:'2026-07-31 23:59',createdAt:'2026-07-01 09:15'},
       '草稿':{id:'ACT-DEMO-DRAFT-003',activityNo:'HD-2026-0003',code:'campaign-demo-draft',mainTitle:'秋季用户共创计划',subtitle:'邀请用户参与产品方向共创',start:'2026-09-01 09:00',end:'2026-10-31 23:59',createdAt:'2026-08-21 11:30'}
     };
     function createActivitySeedPage(activity,status){
-      const statusKey=status==='已发布'?'published':status==='已撤回'?'withdrawn':'draft',layout=buildPermanentActivityLayout(),title=layout.find(function(component){return component.isActivityTitle}),rule=layout.find(function(component){return component.type==='rule'});
+      const statusKey=status==='已发布'?'published':status==='已撤回'?'withdrawn':'draft',layout=buildDemoActivityLayout(),title=layout.find(function(component){return component.isActivityTitle}),rule=layout.find(function(component){return component.type==='rule'});
       if(title)title.text=activity.mainTitle;
       if(rule)rule.text='1. 请在活动时间内提交参与信息；\n2. 请确保填写内容真实、完整；\n3. 运营人员将及时查看并跟进反馈。';
       return {id:'PAGE-DEMO-'+statusKey.toUpperCase()+'-001',name:activity.mainTitle,campaign:activity.mainTitle,components:layout.length,url:status==='草稿'?'':'/?content=demo-'+statusKey,status:status,createdAt:activity.createdAt,publishedAt:status==='已发布'?activity.createdAt:'',activityDetails:{mainTitle:activity.mainTitle,subtitle:activity.subtitle,start:activity.start,end:activity.end,image:activity.image||''},layout:layout};
@@ -441,7 +449,7 @@
       let page=contentPageRecords.find(function(record){return record.id===permanentContentPageId});
       if(!page){page={id:permanentContentPageId,name:activity.mainTitle,campaign:activity.mainTitle,components:builderComponents.length,url:'/?content=public-suggestion-001',status:'已发布',createdAt:activity.createdAt,publishedAt:activity.createdAt,permanent:true,templateVersion:permanentActivityTemplateVersion,activityDetails:{mainTitle:activity.mainTitle,subtitle:activity.subtitle,start:activity.start,end:activity.end,image:activity.image||''},layout:buildPermanentActivityLayout()};contentPageRecords.unshift(page)}
       Object.assign(page,{name:activity.mainTitle,campaign:activity.mainTitle,status:'已发布',permanent:true,activityHidden:false,url:'/?content=public-suggestion-001',activityDetails:Object.assign({},page.activityDetails||{},{mainTitle:activity.mainTitle,subtitle:activity.subtitle,start:activity.start,end:activity.end,image:activity.image||''})});
-      if(!Array.isArray(page.layout)||!page.layout.length)page.layout=buildPermanentActivityLayout();
+      if(Number(page.templateVersion)!==permanentActivityTemplateVersion||!Array.isArray(page.layout)||!page.layout.length){page.layout=buildPermanentActivityLayout();page.components=page.layout.length;page.templateVersion=permanentActivityTemplateVersion}
       return activity;
     }
     function trimActivityListToFourExamples(){
