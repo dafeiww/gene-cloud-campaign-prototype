@@ -421,7 +421,7 @@
     function normalizeContentPageUrl(url){const value=String(url||'');if(value.indexOf('/campaigns/suggestion-2026/pages/content-')===0)return '/?content='+value.split('/').pop();return value}
     function absoluteContentPageUrl(url){try{const normalized=normalizeContentPageUrl(url),relative=normalized.indexOf('/?')===0?normalized.slice(1):normalized;return new URL(relative,location.href).href}catch(e){return url}}
     function loadContentPageRecords(){try{const saved=JSON.parse(localStorage.getItem('geneCloudContentPages'));if(Array.isArray(saved)&&saved.length)contentPageRecords=saved.map(function(r){r.url=normalizeContentPageUrl(r.url);r.status=r.status||'草稿';if(!Array.isArray(r.layout)&&r.id===permanentContentPageId)r.layout=buildPermanentActivityLayout();return r})}catch(e){}}
-    const activityListSeedVersion='fixed-published-withdrawn-draft-v1';
+    const activityListSeedVersion='fixed-published-withdrawn-draft-v2';
     const activityListSeedDefinitions={
       '已发布':{id:'ACT-DEMO-PUBLISHED-001',activityNo:'HD-2026-0002',code:'campaign-demo-published',mainTitle:'基因云分析体验优化调研',subtitle:'收集真实分析场景中的产品建议',start:'2026-08-01 09:00',end:'2026-09-30 23:59',createdAt:'2026-08-18 10:20'},
       '已撤回':{id:'ACT-DEMO-WITHDRAWN-002',activityNo:'HD-2026-0002',code:'campaign-demo-withdrawn',mainTitle:'云分析功能体验调研',subtitle:'收集分析流程中的真实使用反馈',start:'2026-07-01 09:00',end:'2026-07-31 23:59',createdAt:'2026-07-01 09:15'},
@@ -437,10 +437,10 @@
     function ensurePermanentPublicActivity(){
       let activity=activityRecords.find(function(record){return record.id===permanentActivityId});
       if(!activity)activity={id:permanentActivityId,activityNo:'HD-2026-0001',code:'public-suggestion-2026',mainTitle:'你提建议，我们认真改',subtitle:'公开建议征集活动',start:'2026-08-21 00:00',end:'2026-10-31 23:59',createdAt:'2026-08-21 11:00',status:'已发布',image:'',permanent:true,publicAccess:true,sourceBannerId:'',sourceContentPageId:permanentContentPageId};
-      Object.assign(activity,{status:'已发布',permanent:true,publicAccess:true,sourceContentPageId:permanentContentPageId});
+      Object.assign(activity,{subtitle:'采纳建议即送精美礼品',status:'已发布',permanent:true,publicAccess:true,sourceContentPageId:permanentContentPageId});
       let page=contentPageRecords.find(function(record){return record.id===permanentContentPageId});
       if(!page){page={id:permanentContentPageId,name:activity.mainTitle,campaign:activity.mainTitle,components:builderComponents.length,url:'/?content=public-suggestion-001',status:'已发布',createdAt:activity.createdAt,publishedAt:activity.createdAt,permanent:true,templateVersion:permanentActivityTemplateVersion,activityDetails:{mainTitle:activity.mainTitle,subtitle:activity.subtitle,start:activity.start,end:activity.end,image:activity.image||''},layout:buildPermanentActivityLayout()};contentPageRecords.unshift(page)}
-      Object.assign(page,{name:activity.mainTitle,campaign:activity.mainTitle,status:'已发布',permanent:true,activityHidden:false,url:'/?content=public-suggestion-001'});
+      Object.assign(page,{name:activity.mainTitle,campaign:activity.mainTitle,status:'已发布',permanent:true,activityHidden:false,url:'/?content=public-suggestion-001',activityDetails:Object.assign({},page.activityDetails||{},{mainTitle:activity.mainTitle,subtitle:activity.subtitle,start:activity.start,end:activity.end,image:activity.image||''})});
       if(!Array.isArray(page.layout)||!page.layout.length)page.layout=buildPermanentActivityLayout();
       return activity;
     }
