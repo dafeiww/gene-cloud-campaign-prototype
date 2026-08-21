@@ -190,10 +190,12 @@
     function setupStandaloneModules(){[['tab-content','contentBuilderMount'],['tab-banner','bannerAddMount']].forEach(function(pair){const source=document.getElementById(pair[0]),mount=document.getElementById(pair[1]);if(!source||!mount)return;while(source.firstChild)mount.appendChild(source.firstChild);source.remove()});['reviews','rewards','sales'].forEach(function(id){const page=document.getElementById(id);if(page)page.remove()})}
     let createActivityCoverData='';
     let editingActivityBannerData='';
-    const permanentActivityId='ACT-20260814-001';
-    const permanentContentPageId='PAGE-20260814-001';
+    const permanentActivityId='ACT-20260821-PUBLIC-001';
+    const permanentContentPageId='PAGE-20260821-PUBLIC-001';
+    const legacyPermanentActivityId='ACT-20260814-001';
+    const legacyPermanentContentPageId='PAGE-20260814-001';
     const permanentActivityTemplateVersion=2;
-    let activityRecords=[{id:permanentActivityId,activityNo:'HD-2026-0001',code:'suggestion-2026',mainTitle:'你提建议，我们认真改',subtitle:'用户建议征集活动',start:'2026-08-21 00:00',end:'2026-10-31 23:59',createdAt:'2026-08-14 15:30',status:'已发布',image:'',permanent:true,publicAccess:true,sourceBannerId:'BANNER-20260814-001',sourceContentPageId:permanentContentPageId}];
+    let activityRecords=[{id:permanentActivityId,activityNo:'HD-2026-0006',code:'public-suggestion-2026',mainTitle:'你提建议，我们认真改',subtitle:'公开建议征集活动',start:'2026-08-21 00:00',end:'2026-10-31 23:59',createdAt:'2026-08-21 11:00',status:'已发布',image:'',permanent:true,publicAccess:true,sourceBannerId:'',sourceContentPageId:permanentContentPageId}];
     let editingActivityId='ACT-20260814-001';
     function activityBadgeClass(status){return {'已发布':'blue','进行中':'blue','草稿':'orange','已撤回':'gray','已撤销':'red','已结束':'gray'}[status]||'blue'}
     function persistActivityRecords(){try{localStorage.setItem('geneCloudActivityRecords',JSON.stringify(activityRecords))}catch(e){}}
@@ -308,7 +310,7 @@
       return [title,rule,suggestion,scene,name,phone,email,participant,company,address];
     }
     let builderComponents=buildPermanentActivityLayout();
-    let contentPageRecords=[{id:permanentContentPageId,name:'你提建议，我们认真改',campaign:'你提建议，我们认真改',components:builderComponents.length,url:'/?content=content-001',status:'已发布',createdAt:'2026-08-14 15:30',publishedAt:'2026-08-14 15:40',permanent:true,templateVersion:permanentActivityTemplateVersion,activityDetails:{mainTitle:'你提建议，我们认真改',subtitle:'用户建议征集活动',start:'2026-08-21 00:00',end:'2026-10-31 23:59',image:''},layout:JSON.parse(JSON.stringify(builderComponents))}];
+    let contentPageRecords=[{id:permanentContentPageId,name:'你提建议，我们认真改',campaign:'你提建议，我们认真改',components:builderComponents.length,url:'/?content=public-suggestion-001',status:'已发布',createdAt:'2026-08-21 11:00',publishedAt:'2026-08-21 11:00',permanent:true,templateVersion:permanentActivityTemplateVersion,activityDetails:{mainTitle:'你提建议，我们认真改',subtitle:'公开建议征集活动',start:'2026-08-21 00:00',end:'2026-10-31 23:59',image:''},layout:JSON.parse(JSON.stringify(builderComponents))}];
     let editingContentPageId=null;
     let contentEditorReturnActivityId=null;
     function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]})}
@@ -423,14 +425,18 @@
     function absoluteContentPageUrl(url){try{const normalized=normalizeContentPageUrl(url),relative=normalized.indexOf('/?')===0?normalized.slice(1):normalized;return new URL(relative,location.href).href}catch(e){return url}}
     function loadContentPageRecords(){try{const saved=JSON.parse(localStorage.getItem('geneCloudContentPages'));if(Array.isArray(saved)&&saved.length)contentPageRecords=saved.map(function(r){r.url=normalizeContentPageUrl(r.url);r.status=r.status||'草稿';if(!Array.isArray(r.layout)&&r.id===permanentContentPageId)r.layout=buildPermanentActivityLayout();return r})}catch(e){}}
     function ensurePermanentPublicActivity(){
+      activityRecords.forEach(function(record){if(record.id===legacyPermanentActivityId){record.permanent=false;record.publicAccess=false}});
+      contentPageRecords.forEach(function(record){if(record.id===legacyPermanentContentPageId)record.permanent=false});
       let activity=activityRecords.find(function(record){return record.id===permanentActivityId}),page=contentPageRecords.find(function(record){return record.id===permanentContentPageId});
-      if(!activity){activity={id:permanentActivityId,activityNo:'HD-2026-0001',code:'suggestion-2026',mainTitle:'你提建议，我们认真改',subtitle:'用户建议征集活动',start:'2026-08-21 00:00',end:'2026-10-31 23:59',createdAt:'2026-08-14 15:30',status:'已发布',image:'',sourceBannerId:'BANNER-20260814-001',sourceContentPageId:permanentContentPageId};activityRecords.unshift(activity)}
-      if(!page){const layout=buildPermanentActivityLayout();page={id:permanentContentPageId,name:'你提建议，我们认真改',campaign:'你提建议，我们认真改',components:layout.length,url:'/?content=content-001',status:'已发布',createdAt:'2026-08-14 15:30',publishedAt:'2026-08-14 15:40',activityDetails:{mainTitle:'你提建议，我们认真改',subtitle:'用户建议征集活动',start:'2026-08-21 00:00',end:'2026-10-31 23:59',image:''},layout:layout};contentPageRecords.unshift(page)}
+      if(!activity){activity={id:permanentActivityId,activityNo:'HD-2026-0006',code:'public-suggestion-2026',mainTitle:'你提建议，我们认真改',subtitle:'公开建议征集活动',start:'2026-08-21 00:00',end:'2026-10-31 23:59',createdAt:'2026-08-21 11:00',status:'已发布',image:'',sourceBannerId:'',sourceContentPageId:permanentContentPageId};activityRecords.unshift(activity)}
+      if(!page){const layout=buildPermanentActivityLayout();page={id:permanentContentPageId,name:'你提建议，我们认真改',campaign:'你提建议，我们认真改',components:layout.length,url:'/?content=public-suggestion-001',status:'已发布',createdAt:'2026-08-21 11:00',publishedAt:'2026-08-21 11:00',activityDetails:{mainTitle:'你提建议，我们认真改',subtitle:'公开建议征集活动',start:'2026-08-21 00:00',end:'2026-10-31 23:59',image:''},layout:layout};contentPageRecords.unshift(page)}
       const needsTemplateUpgrade=Number(page.templateVersion||0)<permanentActivityTemplateVersion;
-      if(needsTemplateUpgrade){page.layout=buildPermanentActivityLayout();page.activityDetails={mainTitle:'你提建议，我们认真改',subtitle:'用户建议征集活动',start:'2026-08-21 00:00',end:'2026-10-31 23:59',image:activity.image||''};Object.assign(activity,{mainTitle:'你提建议，我们认真改',subtitle:'用户建议征集活动',start:'2026-08-21 00:00',end:'2026-10-31 23:59'})}
+      if(needsTemplateUpgrade){page.layout=buildPermanentActivityLayout();page.activityDetails={mainTitle:'你提建议，我们认真改',subtitle:'公开建议征集活动',start:'2026-08-21 00:00',end:'2026-10-31 23:59',image:activity.image||''};Object.assign(activity,{mainTitle:'你提建议，我们认真改',subtitle:'公开建议征集活动',start:'2026-08-21 00:00',end:'2026-10-31 23:59'})}
       Object.assign(activity,{permanent:true,publicAccess:true,status:'已发布',sourceContentPageId:permanentContentPageId});
-      Object.assign(page,{permanent:true,templateVersion:permanentActivityTemplateVersion,url:'/?content=content-001',status:'已发布',activityHidden:false,components:Array.isArray(page.layout)?page.layout.length:0});
+      Object.assign(page,{permanent:true,templateVersion:permanentActivityTemplateVersion,url:'/?content=public-suggestion-001',status:'已发布',activityHidden:false,components:Array.isArray(page.layout)?page.layout.length:0});
       page.name=activity.mainTitle||page.name;page.campaign=activity.mainTitle||page.campaign;page.activityDetails=Object.assign({},page.activityDetails||{},{mainTitle:activity.mainTitle,subtitle:activity.subtitle||'',start:activity.start||'',end:activity.end||'',image:activity.image||''});
+      activityRecords=[activity].concat(activityRecords.filter(function(record){return record.id!==permanentActivityId}));
+      contentPageRecords=[page].concat(contentPageRecords.filter(function(record){return record.id!==permanentContentPageId}));
       persistActivityRecords();saveContentPageRecords();
     }
     function saveContentPageRecords(){try{localStorage.setItem('geneCloudContentPages',JSON.stringify(contentPageRecords))}catch(e){}}
