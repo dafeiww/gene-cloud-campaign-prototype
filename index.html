@@ -59,6 +59,74 @@
     .banner-setting-panel>.banner-text-setting{grid-template-columns:minmax(0,2.5fr) minmax(120px,.65fr) minmax(160px,.85fr);gap:14px;align-items:end}
     .banner-setting-panel>.banner-text-setting>.form-item:first-child{grid-column:auto}
     @media(max-width:620px){.banner-setting-panel>.banner-text-setting{grid-template-columns:1fr}.banner-setting-panel>.banner-text-setting>.form-item:first-child{grid-column:auto}}
+
+    /* Public activity page: modular card layout */
+    .public-site-nav{height:60px;background:#fff;border-bottom:1px solid #e5ebf2;box-shadow:0 1px 8px rgba(18,48,90,.035)}
+    .public-site-nav-inner{width:min(1120px,100%);height:60px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .public-site-brand{display:flex;align-items:center;min-width:0}
+    .public-site-logo{display:block;width:auto;height:28px;max-width:min(210px,58vw)}
+    .public-site-context{display:flex;align-items:center;gap:8px;color:#526175;font-size:13px;font-weight:650;white-space:nowrap}
+    .public-site-context:before{content:"";width:6px;height:6px;border-radius:50%;background:#1d6af2;box-shadow:0 0 0 4px rgba(29,106,242,.09)}
+    .public-activity-page{min-height:calc(100vh - 60px);background:#eef3f8;padding:32px 18px 56px}
+    .public-activity-card{max-width:820px;background:transparent;border:0;border-radius:0;box-shadow:none;display:grid;gap:16px;overflow:visible}
+    .public-activity-form{padding:0}
+    .public-activity-form form,.preview-public-form{display:grid;gap:16px}
+    .public-module{background:#fff;border:1px solid #dfe7f0;border-radius:16px;box-shadow:0 8px 26px rgba(18,48,90,.055);overflow:hidden}
+    .public-module-overview{position:relative;padding:38px 40px 34px;border-top:3px solid #1769e0}
+    .public-overview-content{position:relative;z-index:1}
+    .public-overview-content .render-title{max-width:700px;margin:0 0 24px!important;font-size:clamp(28px,4.5vw,38px)!important;line-height:1.28;color:#0e2a4d;letter-spacing:-.02em;text-wrap:balance}
+    .public-overview-content>div{margin-bottom:0!important}
+    .public-overview-content .render-body{padding:16px 18px;background:#f6f8fb;border:1px solid #e5ebf2;border-radius:12px;color:#5d697a;line-height:1.9}
+    .public-overview-content .render-body b{color:#34445b;font-size:13px}
+    .public-module-head{min-height:76px;padding:15px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid #e8edf3}
+    .public-module-feedback .public-module-head{background:#f7faff}
+    .public-module-contact .public-module-head{background:#f5fbf9}
+    .public-module-delivery .public-module-head{background:#fffaf3}
+    .public-module-heading{display:flex;align-items:center;gap:12px;min-width:0}
+    .public-module-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none}
+    .public-module-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .public-module-feedback .public-module-icon{background:#e7f1ff;color:#1769e0}
+    .public-module-contact .public-module-icon{background:#e3f5f0;color:#148a73}
+    .public-module-delivery .public-module-icon{background:#fff0dc;color:#b97216}
+    .public-module-copy{display:grid;gap:4px}
+    .public-module-copy h2{margin:0;color:#1b2d44;font-size:16px;line-height:1.35}
+    .public-module-copy p{margin:0;color:#7a8798;font-size:12px;line-height:1.5}
+    .public-module-index{color:#a4afbd;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.08em}
+    .public-module-body{padding:24px;display:grid;gap:22px}
+    .public-module-contact .public-module-body{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px}
+    .public-module-delivery .public-module-body{gap:0}
+    .public-module .published-form-field{min-width:0;margin:0}
+    .public-module .published-form-field label{margin-bottom:9px;color:#26364a;font-size:13px}
+    .public-module .published-form-field input[type="text"],.public-module .published-form-field input[type="tel"],.public-module .published-form-field input[type="email"],.public-module .published-form-field input[type="date"],.public-module .published-form-field input[type="datetime-local"],.public-module .published-form-field select,.public-module .published-form-field textarea{min-height:44px;border-color:#d6dee8;border-radius:9px;padding:11px 13px;transition:border-color .18s,box-shadow .18s,background-color .18s}
+    .public-module .published-form-field textarea{min-height:132px;line-height:1.65}
+    .public-module-delivery .published-form-field textarea{min-height:92px}
+    .public-module .published-form-field input:focus,.public-module .published-form-field select:focus,.public-module .published-form-field textarea:focus{outline:0;border-color:#5d9bea;box-shadow:0 0 0 3px rgba(23,105,224,.1)}
+    .public-module .published-form-field input::placeholder,.public-module .published-form-field textarea::placeholder{color:#a4acb8}
+    .published-choice{min-height:42px;border-radius:9px;transition:border-color .18s,background-color .18s,color .18s}
+    .published-choice:hover{border-color:#9ebfed;background:#f8fbff;color:#315c91}
+    .published-choice:has(input:checked){border-color:#6b9fe4;background:#eef5ff;color:#174f96}
+    .published-upload{min-height:88px;border-color:#bdccdc;border-radius:10px;background:#f9fbfd;cursor:pointer}
+    .published-upload::file-selector-button{height:34px;margin-right:12px;padding:0 13px;border:1px solid #b7d4f7;border-radius:7px;background:#edf6ff;color:#1769e0;font-weight:650;cursor:pointer}
+    .published-error{margin:0;padding:13px 15px;border:1px solid #f1c9c9;border-radius:12px;background:#fff4f4}
+    .public-submit-panel{padding:17px 20px;background:#fff;border:1px solid #dfe7f0;border-radius:16px;box-shadow:0 8px 26px rgba(18,48,90,.055);display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .public-submit-note{display:flex;align-items:center;gap:9px;color:#768397;font-size:12px;line-height:1.5}
+    .public-submit-note svg{width:18px;height:18px;fill:none;stroke:#4d789f;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+    .public-activity-submit{width:auto;min-width:188px;height:46px;margin:0;border-radius:9px;font-weight:650}
+    .public-activity-form>.published-success{background:#fff;border:1px solid #dfe7f0;border-radius:16px;box-shadow:0 8px 26px rgba(18,48,90,.055)}
+    .preview-public-form{padding:18px;background:#eef3f8}
+    .public-form-card{background:#fff;border:1px solid #dfe7f0;border-radius:16px;box-shadow:0 8px 26px rgba(18,48,90,.055);overflow:hidden}
+    .public-form-card .public-module{border:0;border-bottom:1px solid #e5ebf2;border-radius:0;box-shadow:none;overflow:visible}
+    .public-form-card .public-module:last-of-type{border-bottom:0}
+    .public-form-card .public-module-info .public-module-head{background:#f5fbf9}
+    .public-module-info .public-module-icon{background:#e3f5f0;color:#148a73}
+    .public-module-info .public-module-body{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px}
+    .public-module-info .published-form-field:has(textarea){grid-column:1/-1}
+    .public-form-card .public-submit-panel{border:0;border-top:1px solid #e5ebf2;border-radius:0;box-shadow:none;background:#fafbfd}
+    .public-form-card .public-module,.public-form-card .public-submit-panel{animation:none}
+    @media(prefers-reduced-motion:no-preference){.public-module,.public-submit-panel{animation:public-card-in .28s ease-out both}.public-module:nth-of-type(2){animation-delay:.04s}.public-module:nth-of-type(3){animation-delay:.08s}.public-submit-panel{animation-delay:.12s}@keyframes public-card-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
+    @media(max-width:760px){.public-activity-page{padding:12px 10px 30px}.public-activity-card{gap:12px}.public-activity-form{padding:0}.public-activity-form form,.preview-public-form{gap:12px}.public-module{border-radius:13px}.public-module-overview{padding:28px 20px 24px}.public-overview-content .render-title{font-size:28px!important}.public-overview-content .render-body{padding:14px 15px}.public-module-head{min-height:70px;padding:13px 16px}.public-module-icon{width:36px;height:36px;border-radius:10px}.public-module-copy h2{font-size:15px}.public-module-copy p{font-size:11px}.public-module-body{padding:18px;gap:19px}.public-module-contact .public-module-body,.public-module-info .public-module-body{grid-template-columns:1fr;gap:19px}.public-submit-panel{padding:16px;border-radius:13px;align-items:stretch;flex-direction:column}.public-form-card{border-radius:13px}.public-form-card .public-submit-panel{border-radius:0}.public-activity-submit{width:100%;min-width:0}.preview-public-form{padding:12px}}
+    @media(max-width:760px){.public-site-nav-inner{padding:0 16px}.public-site-logo{height:24px}.public-site-context{font-size:12px}}
+    @media(max-width:430px){.public-module-index{display:none}}
   </style>
 </head>
 <body>
@@ -607,13 +675,81 @@
     function confirmModal(){if(modalType==='create'){nextCreateStep();return}closeModal();showToast('操作已保存')}
     function closeModal(){document.getElementById('modalMask').classList.remove('show')}function maskClose(e,id){if(e.target.id===id)document.getElementById(id).classList.remove('show')}
     function publishedLabel(c){return '<label>'+(c.required?'<span class="render-required">*</span>':'')+esc(c.label||c.name)+'</label>'}
-    function renderPublishedFormComponent(c){const id=esc(c.id),wrapStart='<div class="published-form-field" data-answer-component="'+id+'">',wrapEnd='</div>';if(c.type==='title'||c.type==='body'||c.type==='rule'||c.type==='divider'||c.type==='time')return '<div style="margin-bottom:18px">'+renderBuilderComponent(c)+'</div>';if(c.type==='pagebreak'||c.type==='onepage'||c.type==='timer'||c.type==='collapse')return '<div style="margin-bottom:18px">'+renderBuilderComponent(c)+'</div>';if(c.type==='radio'||c.type==='gender'||c.type==='scale'){return wrapStart+publishedLabel(c)+'<div class="published-choice-list">'+(c.options||[]).map(function(option,index){return '<label class="published-choice"><input type="radio" name="'+id+'" value="'+esc(option)+'" />'+esc(option)+'</label>'}).join('')+'</div>'+wrapEnd}if(c.type==='checkbox'){return wrapStart+publishedLabel(c)+'<div class="published-choice-list">'+(c.options||[]).map(function(option){return '<label class="published-choice"><input type="checkbox" value="'+esc(option)+'" />'+esc(option)+'</label>'}).join('')+'</div>'+wrapEnd}if(c.type==='select'||c.type==='cascader'){return wrapStart+publishedLabel(c)+'<select><option value="">请选择</option>'+(c.options||[]).map(function(option){return '<option value="'+esc(option)+'">'+esc(option)+'</option>'}).join('')+'</select>'+wrapEnd}if(c.type==='upload'){return wrapStart+publishedLabel(c)+'<input class="published-upload" type="file" multiple />'+wrapEnd}if(c.type==='sort'){return wrapStart+publishedLabel(c)+(c.options||[]).map(function(_,index){return '<select data-value-label="第'+(index+1)+'位" style="margin-bottom:8px"><option value="">请选择第'+(index+1)+'位</option>'+(c.options||[]).map(function(option){return '<option value="'+esc(option)+'">'+esc(option)+'</option>'}).join('')+'</select>'}).join('')+wrapEnd}if(c.type==='multiinput'){return wrapStart+publishedLabel(c)+(c.options||[]).map(function(option){return '<input type="text" data-value-label="'+esc(option)+'" placeholder="请输入'+esc(option)+'" style="margin-bottom:8px" />'}).join('')+wrapEnd}if(c.type.indexOf('matrix')===0){const radioType=c.type==='matrixcheck'?'checkbox':c.type==='matrixfill'?'text':'radio';return wrapStart+publishedLabel(c)+'<div style="overflow:auto"><table class="render-matrix"><thead><tr><th></th>'+(c.columns||[]).map(function(column){return '<th>'+esc(column)+'</th>'}).join('')+'</tr></thead><tbody>'+(c.rows||[]).map(function(row,rowIndex){return '<tr><th>'+esc(row)+'</th>'+(c.columns||[]).map(function(column){const name=id+'_'+rowIndex,isText=radioType==='text';return '<td><input type="'+radioType+'" '+(radioType==='radio'?'name="'+name+'" ':'')+(isText?'value="" placeholder="请输入" data-value-label="'+esc(row)+' / '+esc(column)+'"':'value="'+esc(column)+'" data-value-label="'+esc(row)+'"')+' /></td>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>'+wrapEnd}if(c.type==='textarea')return wrapStart+publishedLabel(c)+'<textarea placeholder="'+esc(c.placeholder)+'"></textarea>'+wrapEnd;const inputType=c.type==='phone'?'tel':c.type==='email'?'email':c.type==='date'?'datetime-local':'text';return wrapStart+publishedLabel(c)+'<input type="'+inputType+'" placeholder="'+esc(c.placeholder||'请输入内容')+'" />'+wrapEnd}
+    function renderPublishedFormComponent(c){
+      const id=esc(c.id),wrapStart='<div class="published-form-field" data-answer-component="'+id+'">',wrapEnd='</div>';
+      if(c.type==='title'||c.type==='body'||c.type==='rule'||c.type==='divider'||c.type==='time')return '<div style="margin-bottom:18px">'+renderBuilderComponent(c)+'</div>';
+      if(c.type==='pagebreak'||c.type==='onepage'||c.type==='timer'||c.type==='collapse')return '<div style="margin-bottom:18px">'+renderBuilderComponent(c)+'</div>';
+      if(c.type==='radio'||c.type==='gender'||c.type==='scale')return wrapStart+publishedLabel(c)+'<div class="published-choice-list">'+(c.options||[]).map(function(option){return '<label class="published-choice"><input type="radio" name="'+id+'" value="'+esc(option)+'" />'+esc(option)+'</label>'}).join('')+'</div>'+wrapEnd;
+      if(c.type==='checkbox')return wrapStart+publishedLabel(c)+'<div class="published-choice-list">'+(c.options||[]).map(function(option){return '<label class="published-choice"><input type="checkbox" value="'+esc(option)+'" />'+esc(option)+'</label>'}).join('')+'</div>'+wrapEnd;
+      if(c.type==='select'||c.type==='cascader')return wrapStart+publishedLabel(c)+'<select><option value="">请选择</option>'+(c.options||[]).map(function(option){return '<option value="'+esc(option)+'">'+esc(option)+'</option>'}).join('')+'</select>'+wrapEnd;
+      if(c.type==='upload')return wrapStart+publishedLabel(c)+'<input class="published-upload" type="file" multiple />'+wrapEnd;
+      if(c.type==='sort')return wrapStart+publishedLabel(c)+(c.options||[]).map(function(_,index){return '<select data-value-label="第'+(index+1)+'位" style="margin-bottom:8px"><option value="">请选择第'+(index+1)+'位</option>'+(c.options||[]).map(function(option){return '<option value="'+esc(option)+'">'+esc(option)+'</option>'}).join('')+'</select>'}).join('')+wrapEnd;
+      if(c.type==='multiinput')return wrapStart+publishedLabel(c)+(c.options||[]).map(function(option){return '<input type="text" data-value-label="'+esc(option)+'" placeholder="请输入'+esc(option)+'" style="margin-bottom:8px" />'}).join('')+wrapEnd;
+      if(c.type.indexOf('matrix')===0){
+        const radioType=c.type==='matrixcheck'?'checkbox':c.type==='matrixfill'?'text':'radio';
+        return wrapStart+publishedLabel(c)+'<div style="overflow:auto"><table class="render-matrix"><thead><tr><th></th>'+(c.columns||[]).map(function(column){return '<th>'+esc(column)+'</th>'}).join('')+'</tr></thead><tbody>'+(c.rows||[]).map(function(row,rowIndex){return '<tr><th>'+esc(row)+'</th>'+(c.columns||[]).map(function(column){const name=id+'_'+rowIndex,isText=radioType==='text';return '<td><input type="'+radioType+'" '+(radioType==='radio'?'name="'+name+'" ':'')+(isText?'value="" placeholder="请输入" data-value-label="'+esc(row)+' / '+esc(column)+'"':'value="'+esc(column)+'" data-value-label="'+esc(row)+'"')+' /></td>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>'+wrapEnd;
+      }
+      if(c.type==='textarea'||c.type==='address')return wrapStart+publishedLabel(c)+'<textarea placeholder="'+esc(c.placeholder)+'"></textarea>'+wrapEnd;
+      const inputType=c.type==='phone'?'tel':c.type==='email'?'email':c.type==='date'?'datetime-local':'text';
+      return wrapStart+publishedLabel(c)+'<input type="'+inputType+'" placeholder="'+esc(c.placeholder||'请输入内容')+'" />'+wrapEnd;
+    }
+    function publishedSectionIcon(kind){
+      const paths={feedback:'<path d="M5 5.5h14v10H9l-4 3v-13Z"></path><path d="M8.5 9h7M8.5 12h4"></path>',contact:'<circle cx="12" cy="8" r="3.2"></circle><path d="M5.5 19c.7-3.5 3-5.3 6.5-5.3s5.8 1.8 6.5 5.3"></path>',delivery:'<path d="M4 8.5 12 4l8 4.5v8L12 21l-8-4.5v-8Z"></path><path d="m4.5 8.5 7.5 4.3 7.5-4.3M12 12.8V21M8.2 6.2l7.7 4.4"></path>',info:'<circle cx="8" cy="7.5" r="2.8"></circle><path d="M3.5 17.5c.6-3.2 2.1-4.8 4.5-4.8s3.9 1.4 4.5 4.2"></path><path d="M17 11.5c2 0 3.5 1.5 3.5 3.4 0 2.5-3.5 5.6-3.5 5.6s-3.5-3.1-3.5-5.6c0-1.9 1.5-3.4 3.5-3.4Z"></path><circle cx="17" cy="14.9" r=".7"></circle>'};
+      return '<svg viewBox="0 0 24 24" aria-hidden="true">'+(paths[kind]||'')+'</svg>';
+    }
+    function publishedComponentSection(c){
+      const type=String(c.type||''),label=String(c.label||c.name||'');
+      if(['title','body','rule','time'].indexOf(type)>=0)return 'overview';
+      if(type==='address'||/邮寄|收货|地址/.test(label))return 'delivery';
+      if(['name','phone','email','gender','company'].indexOf(type)>=0||/姓名|手机|电话|邮箱|身份|单位|机构|联系人|参与人员/.test(label))return 'contact';
+      return 'feedback';
+    }
+    function renderPublishedFormSections(components,footerHtml){
+      const groups={overview:[],feedback:[],contact:[],delivery:[]};
+      (components||[]).forEach(function(component){groups[publishedComponentSection(component)].push(component)});
+      let content='';
+      if(groups.overview.length)content+='<section class="public-module public-module-overview" aria-label="活动说明"><div class="public-overview-content">'+groups.overview.map(renderPublishedFormComponent).join('')+'</div></section>';
+      const sections=[
+        {key:'feedback',title:'建议内容',description:'请描述使用场景、遇到的问题和改进想法',components:groups.feedback},
+        {key:'info',title:'联系与邮寄信息',description:'用于后续确认建议及礼品寄送',components:groups.contact.concat(groups.delivery)}
+      ];
+      let step=0,formContent='';
+      sections.forEach(function(section){
+        if(!section.components.length)return;
+        step+=1;
+        const titleId='published-section-'+section.key;
+        formContent+='<section class="public-module public-module-'+section.key+'" aria-labelledby="'+titleId+'"><header class="public-module-head"><div class="public-module-heading"><span class="public-module-icon">'+publishedSectionIcon(section.key)+'</span><div class="public-module-copy"><h2 id="'+titleId+'">'+section.title+'</h2><p>'+section.description+'</p></div></div><span class="public-module-index">'+String(step).padStart(2,'0')+'</span></header><div class="public-module-body">'+section.components.map(renderPublishedFormComponent).join('')+'</div></section>';
+      });
+      if(formContent||footerHtml)content+='<section class="public-form-card" aria-label="填写信息">'+formContent+(footerHtml||'')+'</section>';
+      return content;
+    }
     function collectPublishedAnswer(block){const controls=Array.from(block.querySelectorAll('input,textarea,select')),parts=[];controls.forEach(function(control){if(control.type==='file'){const names=Array.from(control.files||[]).map(function(file){return file.name});if(names.length)parts.push(names.join('、'));return}if((control.type==='radio'||control.type==='checkbox')&&!control.checked)return;const value=String(control.value||'').trim();if(!value)return;const label=control.dataset.valueLabel;parts.push(label?label+'：'+value:value)});return Array.from(new Set(parts))}
     function nextParticipationId(){const now=new Date(),pad=function(v){return String(v).padStart(2,'0')};return 'CY'+now.getFullYear()+pad(now.getMonth()+1)+pad(now.getDate())+pad(now.getHours())+pad(now.getMinutes())+pad(now.getSeconds())+String(now.getMilliseconds()).padStart(3,'0')}
     function submitPublishedParticipation(pageId){const sharedPage=window.sharedPublishedPage,sharedActivity=window.sharedPublishedActivity,page=sharedPage&&sharedPage.id===pageId?sharedPage:contentPageRecords.find(function(r){return r.id===pageId}),form=document.getElementById('publishedActivityForm'),error=document.getElementById('publishedFormError');if(!page||!form)return;const components=Array.isArray(page.layout)?page.layout:[],answers=[],missing=[];form.querySelectorAll('[data-answer-component]').forEach(function(block){const component=components.find(function(c){return c.id===block.dataset.answerComponent});if(!component)return;const values=collectPublishedAnswer(block);if(component.required&&!values.length)missing.push(component.label||component.name);answers.push({componentId:component.id,label:component.label||component.name,type:component.type,value:values.length?values.join('；'):'未填写'})});if(missing.length){error.textContent='请完成必填项：'+missing.slice(0,3).join('、')+(missing.length>3?' 等':'');error.classList.add('show');error.focus();return}const answerByType=function(type){const component=components.find(function(c){return c.type===type}),answer=component&&answers.find(function(a){return a.componentId===component.id});return answer&&answer.value!=='未填写'?answer.value:''},activity=sharedActivity&&sharedActivity.sourceContentPageId===page.id?sharedActivity:activityRecords.find(function(r){return r.sourceContentPageId===page.id}),details=Object.assign({},page.activityDetails||{},activity||{}),record={id:nextParticipationId(),activityId:activity&&activity.id||'',activityName:details.mainTitle||page.campaign||page.name||'未命名活动',contentPageId:page.id,user:answerByType('name')||'匿名用户',company:answerByType('company')||'',phone:answerByType('phone')||'',sales:'—',status:'未查看',submittedAt:contentPageTimestamp(),answers:answers};records.unshift(record);persistParticipationRecords();const panel=document.getElementById('publishedFormPanel');panel.innerHTML='<div class="published-success"><div style="width:54px;height:54px;border-radius:50%;background:#eaf8f0;color:#258451;display:grid;place-items:center;margin:0 auto;font-size:26px">✓</div><h2>提交成功</h2><p>参与编号：'+esc(record.id)+'<br/>填写内容已进入活动后台的参与记录。</p></div>'}
-    function previewActivity(){const content=builderComponents.map(renderPublishedFormComponent).join('');document.getElementById('previewModalTitle').textContent='用户端活动预览';document.getElementById('previewDynamic').innerHTML='<div style="padding:26px 34px">'+content+'</div>';document.getElementById('previewMask').classList.add('show')}
+    function previewActivity(){
+      document.getElementById('previewModalTitle').textContent='用户端活动预览';
+      document.getElementById('previewDynamic').innerHTML='<div class="preview-public-form">'+renderPublishedFormSections(builderComponents)+'</div>';
+      document.getElementById('previewMask').classList.add('show');
+    }
     function closePreview(){document.getElementById('previewMask').classList.remove('show')}
-    function renderPublishedContentPage(){const params=new URLSearchParams(location.search),contentKey=params.get('content');if(!contentKey)return;const shared=decodeActivityShareData(params.get('share')),localRecord=contentPageRecords.find(function(r){return normalizeContentPageUrl(r.url)==='/?content='+contentKey}),record=shared?Object.assign({status:'已发布'},shared.page):localRecord;if(!record||record.status!=='已发布'){document.title='页面暂不可访问 · 派森诺基因云';document.body.innerHTML="<main class='public-page-unavailable' data-screen-label='活动页面不可用'><div><div style='font-size:38px;color:#8a96a8'>◷</div><h2 style='margin:18px 0 8px'>页面暂不可访问</h2><p style='margin:0;color:#7b8798;line-height:1.8'>该活动尚未发布或已被撤回，请联系活动运营人员。</p></div></main>";return}const activity=shared?Object.assign({sourceContentPageId:record.id,status:'已发布'},shared.activity):activityRecords.find(function(r){return r.sourceContentPageId===record.id});window.sharedPublishedPage=shared?record:null;window.sharedPublishedActivity=shared?activity:null;const details=Object.assign({mainTitle:record.campaign||record.name||'活动参与页面'},record.activityDetails||{},activity||{}),pageComponents=Array.isArray(record.layout)&&record.layout.length?record.layout:builderComponents,content=pageComponents.map(renderPublishedFormComponent).join('');document.title=details.mainTitle+' · 派森诺基因云';document.body.innerHTML='<main class="public-activity-page" data-screen-label="用户活动填写页"><section class="public-activity-card"><header class="public-activity-head"><b>活动信息填写</b><span>请完整填写以下内容</span></header><div id="publishedFormPanel" class="public-activity-form"><form id="publishedActivityForm"><div class="published-error" id="publishedFormError" tabindex="-1"></div>'+content+'<button type="submit" class="btn primary public-activity-submit" onclick="event.preventDefault();submitPublishedParticipation(\''+esc(record.id)+'\')">提交参与信息</button></form></div></section></main>'}
+    function renderPublishedContentPage(){
+      const params=new URLSearchParams(location.search),contentKey=params.get('content');
+      if(!contentKey)return;
+      const shared=decodeActivityShareData(params.get('share')),localRecord=contentPageRecords.find(function(r){return normalizeContentPageUrl(r.url)==='/?content='+contentKey}),record=shared?Object.assign({status:'已发布'},shared.page):localRecord;
+      if(!record||record.status!=='已发布'){
+        document.title='页面暂不可访问 · 派森诺基因云';
+        document.body.innerHTML="<main class='public-page-unavailable' data-screen-label='活动页面不可用'><div><div style='font-size:38px;color:#8a96a8'>◷</div><h2 style='margin:18px 0 8px'>页面暂不可访问</h2><p style='margin:0;color:#7b8798;line-height:1.8'>该活动尚未发布或已被撤回，请联系活动运营人员。</p></div></main>";
+        return;
+      }
+      const activity=shared?Object.assign({sourceContentPageId:record.id,status:'已发布'},shared.activity):activityRecords.find(function(r){return r.sourceContentPageId===record.id});
+      window.sharedPublishedPage=shared?record:null;
+      window.sharedPublishedActivity=shared?activity:null;
+      const details=Object.assign({mainTitle:record.campaign||record.name||'活动参与页面'},record.activityDetails||{},activity||{}),pageComponents=Array.isArray(record.layout)&&record.layout.length?record.layout:builderComponents;
+      const noteIcon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 2.8 7.7 7 10 4.2-2.3 7-5.5 7-10V6l-7-3Z"></path><path d="m9 12 2 2 4-4"></path></svg>';
+      const submitPanel='<footer class="public-submit-panel"><div class="public-submit-note">'+noteIcon+'<span>请确认填写信息准确后提交</span></div><button type="submit" class="btn primary public-activity-submit" onclick="event.preventDefault();submitPublishedParticipation(\''+esc(record.id)+'\')">提交参与信息</button></footer>',content=renderPublishedFormSections(pageComponents,submitPanel);
+      document.title=details.mainTitle+' · 派森诺基因云';
+      document.body.innerHTML='<nav class="public-site-nav" aria-label="活动页导航"><div class="public-site-nav-inner"><div class="public-site-brand"><img class="public-site-logo" src="./logo_blue.svg" alt="派森诺基因云" /></div><div class="public-site-context">活动中心</div></div></nav><main class="public-activity-page" data-screen-label="用户活动填写页"><section class="public-activity-card"><div id="publishedFormPanel" class="public-activity-form"><form id="publishedActivityForm"><div class="published-error" id="publishedFormError" tabindex="-1"></div>'+content+'</form></div></section></main>';
+    }
     function toggleSwitch(el){el.classList.toggle('on');showToast('开关设置已更新')}
     function exportData(){showToast('Excel 导出任务已创建，文件准备完成')}
     function showToast(t){const e=document.getElementById('toast');e.textContent='✓ '+t;e.classList.add('show');clearTimeout(window._toast);window._toast=setTimeout(()=>e.classList.remove('show'),2600)}
